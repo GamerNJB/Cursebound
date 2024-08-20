@@ -1,29 +1,44 @@
 package com.gameidiots.cursebound;
 
-import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.nbt.NbtCompound;
 
-public class CurseComponent {
+public class CurseComponent
+{
+    private static final String CURSE_TYPE_KEY = "CurseType";
     private CurseType curseType;
 
-    public CurseType getCurseType() {
-        return curseType;
+    public CurseComponent()
+    {
+        this.curseType = CurseType.NONE;
     }
 
-    public void setCurseType(CurseType curseType) {
+    public CurseType getCurseType()
+    {
+        return this.curseType;
+    }
+
+    public void setCurseType(CurseType curseType)
+    {
         this.curseType = curseType;
     }
 
-    // Save and load from NBT
-    public void readNbt(NbtCompound nbt) {
-        if (nbt.contains("CurseType")) {
-            this.curseType = CurseType.valueOf(nbt.getString("CurseType"));
+    public void readNbt(NbtCompound nbt)
+    {
+        if (nbt.contains(CURSE_TYPE_KEY))
+        {
+            String stringValue = nbt.getString(CURSE_TYPE_KEY);
+            if (!stringValue.isEmpty())
+            {
+                this.curseType = CurseType.valueOf(stringValue);
+            }
         }
     }
 
-    public void writeNbt(NbtCompound nbt) {
-        if (curseType != null) {
-            nbt.putString("CurseType", curseType.name());
+    public void writeNbt(NbtCompound nbt)
+    {
+        if (this.curseType != CurseType.NONE)
+        {
+            nbt.putString(CURSE_TYPE_KEY, this.curseType.name());
         }
     }
 }

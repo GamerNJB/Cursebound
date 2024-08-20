@@ -1,6 +1,8 @@
 package com.gameidiots.cursebound;
 
-public enum CurseType {
+public enum CurseType
+{
+    NONE,
     PHOENIX,
     WITHER,
     COLOSSI,
