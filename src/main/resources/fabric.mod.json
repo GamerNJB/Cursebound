@@ -18,7 +18,10 @@
     "entrypoints": {
         "main": [
             "com.gameidiots.cursebound.ModMain"
-        ]
+        ],
+"tick": [
+      "cursebound:withered"
+    ]
     },
     "depends": {
         "fabricloader": ">=0.15.11",

@@ -1,0 +1,1 @@
+effect give @a[tag=WITHER] cursebound:withered infinite 1 true

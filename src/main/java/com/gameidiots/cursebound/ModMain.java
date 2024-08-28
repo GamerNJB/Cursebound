@@ -7,6 +7,7 @@ import com.gameidiots.cursebound.registry.ModDamageTypes;
 import com.gameidiots.cursebound.registry.ModStatusEffects;
 
 import net.fabricmc.api.ModInitializer;
+import net.fabricmc.fabric.api.command.v2.CommandRegistrationCallback;
 import net.fabricmc.fabric.api.event.player.AttackEntityCallback;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.effect.StatusEffectInstance;
@@ -42,5 +43,12 @@ public class ModMain implements ModInitializer
             }
             return ActionResult.PASS;
         });
+
+        // Register commands
+        CommandRegistrationCallback.EVENT.register((dispatcher, registryAccess, environment) -> {
+            CurseCommands.register(dispatcher);
+        });
+        
+        LOGGER.info("{} mod has been initialized", MOD_NAME);
     }
 }
